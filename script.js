@@ -97,7 +97,7 @@ const startLogOutTimer = function () {
   };
 
   // Setting time to 5 minutes in seconds
-  let time = 10 * 60;
+  let time = 10 * 60; 
   // let time = 10;
 
   tick();
@@ -197,10 +197,12 @@ const printMovements = function (account, sort = false) {
 };
 // printMovements(account1.movements);
 printMovements(account1);
-// create usernames
-// const user = 'steven Thomas Williams';
-// const username = user.toLowerCase().split(' ').map(name => name[0]).join('');
-// console.log(username);
+/** 
+  create usernames
+ const user = 'steven Thomas Williams';
+const username = user.toLowerCase().split(' ').map(name => name[0]).join('');
+console.log(username);
+*/ 
 
 const createUsernames = function (accounts) {
   accounts.forEach(acc => {
@@ -391,6 +393,7 @@ btnLoan.addEventListener('click', function (e) {
 
     // LEC 16)
     // 4.
+    // Reset timer
     clearInterval(timer);
     timer = startLogOutTimer();
   }
@@ -465,34 +468,124 @@ btnSort.addEventListener('click', function () {
 //   sorted = !sorted;
 // });
 
+/**
+sample for filter
 
-// sample for filter
+const calcAverageHumanAge = function (ages) {
+    const humanAges = ages.map(age => (age<= 2 ? 2 * age : 16 + age * 4));
+    const adults = humanAges.filter(age => age >=18);
+    console.log(humanAges);
+    console.log(adults);
 
-// const calcAverageHumanAge = function (ages) {
-//     const humanAges = ages.map(age => (age<= 2 ? 2 * age : 16 + age * 4));
-//     const adults = humanAges.filter(age => age >=18);
-//     console.log(humanAges);
-//     console.log(adults);
+};
 
-// };
+calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 
-// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+PIPELINE
 
-// PIPELINE
+const eurToUsd = 1.1;
+const totalDepositsUSD = movements
+    .filter(mov => mov > 0)
+    .map(mov => mov * eurToUsd)
+    .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
 
-// const eurToUsd = 1.1;
-// const totalDepositsUSD = movements
-//     .filter(mov => mov > 0)
-//     .map(mov => mov * eurToUsd)
-//     .reduce((acc, mov) => acc + mov, 0);
-// console.log(totalDepositsUSD);
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
 
-// const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
-// console.log(arr.flat());
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
 
-// const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
-// console.log(arrDeep.flat(2));
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+console.log(owners)
 
-// const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
-// console.log(owners.sort());
-// console.log(owners)
+console.log(23 === 23.0)
+
+// conversion
+
+console.log(Number('23'));
+console.log(+'23');
+
+console.log(Number.parseInt('30px'));
+
+console.log(Math.sqrt(25));
+console.log(Math.PI);
+console.log(Math.trunc(Math.random() * 6) + 1);
+const randomInt = (min, max) =>
+Math.trunc(Math.random() * (max - min) + 1) + min;
+
+console.log(randomInt(10, 20));
+
+console.log(Math.round(23.3));
+console.log(Math.round(23.9));
+
+console.log(Math.ceil(23.1));
+console.log(Math.floor(23.6));
+
+Rounding decimal
+
+console.log((2.7).toFixed(0));
+console.log((2.7).toFixed(2));
+
+labelBalance.addEventListener('click', function () {
+  [...document.querySelectorAll('.movements__row')].
+  forEach(function (row, i) {
+    // 0, 2,4,6
+    if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+    // 0, 3,6, 9
+    if (i % 3 === 0) row.style.backgroundColor = 'blue';
+  }) ;
+});
+
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(Number.MIN_SAFE_INTEGER);
+const huge = 202898302372n;
+const num = 23;
+
+console.log(huge * BigInt(num));
+console.log(huge + ' Is Really Big!!!');
+
+console.log(9n / 3n);
+
+
+// create a date
+
+const now = new Date();
+console.log(now);
+console.log(new Date('December 24, 2023'));
+console.log(new Date(account1.movementsDates[0]));
+
+console.log(new Date(2037, 10, 19, 15, 23, 5));
+console.log('======================');
+console.log(new Date(3 * 24 * 60 * 1000));
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear())
+ 
+working with date
+
+const now = new Date();
+console.log(now.getHours(),now.getMinutes(),now.getFullYear());
+
+console.log('====================================');
+// console.log(new Date().toISOString());
+console.log(new Date());
+
+const ingredients = ['olives', 'spinach']
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is Your Pizza with ${ing1} and ${ing2}`),
+  3000,
+  ...ingredients
+);
+console.log('Waiting...');
+
+if(ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+setInterval(function () {
+  const now = new Date();
+  console.log(now);
+}, 1000);
+
+ */
+
